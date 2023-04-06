@@ -1,0 +1,52 @@
+<section class="registrazioneUtente">
+  <form [formGroup]="form" (ngSubmit)="registra()">
+    <div class="form-group">
+      <label for="inputNome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="inputNome" formControlName="inputNome" placeholder="Inserisci il tuo nome" required>
+    </div>
+    <div class="form-group">
+      <label for="inputCognome" class="form-label">Cognome</label>
+      <input type="text" class="form-control" id="inputCognome" formControlName="inputCognome" placeholder="Inserisci il tuo cognome" required>
+    </div>
+    <div class="form-group">
+      <label for="inputUsername" class="form-label">Username</label>
+      <input type="text" class="form-control" id="inputUsername" formControlName="inputUsername"
+      placeholder="Inserisci il tuo username" required>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail" formControlName="inputEmail" aria-describedby="emailHelp"
+      placeholder="Inserisci la tua email" required>
+    </div>
+    <div class="form-group">
+      <label for="inputDataNascita" class="form-label">Data di nascita</label>
+      <input type="date" class="form-control" id="inputDataNascita" formControlName="inputDataNascita" required>
+    </div>
+    <div class="form-group">
+      <label for="inputPortafoglio" class="form-label">Portafoglio</label>
+      <input type="number" class="form-control" id="inputPortafoglio" formControlName="inputPortafoglio"
+      placeholder="Carica soldi sul tuo account" required>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword" #inputPassword formControlName="inputPassword"
+      placeholder="Inserisci la tua password" required>
+      <p class="btn btn-light pulsanteOcchio" (click)="inputPassword.type=inputPassword.type=='password'?'text':'password'"
+          (click)="occhio1()">
+          <i class="fa-regular fa-eye-slash occhio1"></i></p>
+    </div>
+    <div class="form-group">
+      <label for="inputCheckPassword" class="form-label">Controllo Password</label>
+      <input type="password" class="form-control" id="inputCheckPassword" #inputCheckPassword formControlName="inputCheckPassword"
+      placeholder="Reinserisci la tua password" required>
+      <p class="btn btn-light pulsanteOcchio" (click)="inputCheckPassword.type=inputCheckPassword.type=='password'?'text':'password'"
+            (click)="occhio2()">
+            <i class="fa-regular fa-eye-slash occhio2"></i></p>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2" [ngClass]="{'disabled':form.invalid}">Registrati</button>
+  </form>
+  <div *ngIf="this.interruttore1" class="fw-bold text-danger text-center"><p>Errore, username già in uso<p></div>
+  <div *ngIf="this.interruttore2" class="fw-bold text-danger text-center"><p>Errore, controlla di aver reinserito correttamente la password<p></div>
+  <div *ngIf="this.interruttore3" class="fw-bold text-danger text-center"><p>Errore, email non valida<p></div>
+</section>
+<app-navbar></app-navbar>
